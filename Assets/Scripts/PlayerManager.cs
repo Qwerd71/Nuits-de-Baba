@@ -129,7 +129,7 @@ public class PlayerManager: MonoBehaviour
                         Heart_f2.SetActive(false);
                         break;
                     case (0):
-                        Death;
+                        Death();
                         break;
                 }
             }
