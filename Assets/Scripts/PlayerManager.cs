@@ -90,9 +90,27 @@ public class PlayerManager: MonoBehaviour
         }
         else
             sr.enabled = true;
-            
-        
-            
+
+        if (transform.position.y <= -8)
+        { // en cas de trou, on perd un coeur en tombant et on est respawn en début de niveau
+            life -= 1;
+            isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;
+            switch (life)
+            {
+                case (2):
+                    LoseLife(Heart3);
+                    break;
+                case (1):
+                    LoseLife(Heart2);
+                    break;
+                case (0):
+                    LoseLife(Heart1);
+                    Death();
+                    break;
+            }
+            transform.position = GameManager.Instance.lastCheckpoint;
+        }            
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -100,7 +118,6 @@ public class PlayerManager: MonoBehaviour
             Jumping = false;
         if (collision.collider.tag.Equals("Enemy") && isInvincible == false)
         {
-            Debug.Log(life);
             life -= 1;
             isInvincible = true;
             currentinvincibilityTime = invincibilityTime + Time.time;
