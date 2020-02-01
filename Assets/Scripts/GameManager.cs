@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     GameObject inthevoid = null;
     GameObject[] Allgos;
     BoxCollider2D bc;
-    Vector3 hit;
+    Vector3 hit3;
+    RaycastHit2D hit;
     public float shieldtime;
     public float currentshieldtime;
     public GameObject shield;
@@ -51,11 +52,11 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {// ce bloc pour le pouvoir du stage 1
                     //Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                   /* if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
+                   if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
                     {
                         inthevoid = hit.collider.gameObject;
                         hit.collider.gameObject.SetActive(false);
-                    }*/
+                    }
                 }
                 else if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
@@ -67,12 +68,12 @@ public class GameManager : MonoBehaviour
             case 2:
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
-                    hit = Camera.main.ScreenToWorldPoint(Input.mousePosition);//hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    hit3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
 
-                        Fireball.transform.LookAt(new Vector2(hit.x, hit.y));
+                        Fireball.transform.LookAt(new Vector2(hit3.x, hit3.y));
                         Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
-                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((hit - Fireball.transform.position).x, (hit - Fireball.transform.position).y) * 50);
+                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((hit3 - Fireball.transform.position).x, (hit3 - Fireball.transform.position).y) * 50);
                         Destroy(Fireball, 2f);
                 }
                 //gameObject.SetActive(false);
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
             default:
                 if (Input.GetMouseButtonDown(0))
                 {
-                    /*hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                     switch (hit.collider.name)
                     {
                         case "Docteur":
@@ -142,7 +143,7 @@ public class GameManager : MonoBehaviour
                             tm.text = "";
                             tm.font = new Font("Arial");
                             break;
-                    }*/
+                    }
                 }
                 break;
         }

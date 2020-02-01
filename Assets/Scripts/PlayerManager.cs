@@ -145,7 +145,6 @@ public class PlayerManager: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag.Equals("Floor") || collision.tag.Equals("Destroyable"))
             Jumping = false;
         if (collision.tag.Equals("Enemy") && isInvincible == false)
