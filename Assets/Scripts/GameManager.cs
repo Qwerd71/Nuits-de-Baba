@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     GameObject[] Allgos;
     bool onMap1 = true;
     BoxCollider2D bc;
+    RaycastHit2D hit;
     
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,12 @@ public class GameManager : MonoBehaviour
         switch (stage)
         {
             case 1:
-                if (Input.GetMouseButtonDown(0) && Physics2D.Raycast // ce bloc pour le pouvoir du stage 1
-                (Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero)
-                && inthevoid == null && hit1.collider.gameObject.tag == "Destroyable"))
+                if (Input.GetMouseButtonDown(0))// ce bloc pour le pouvoir du stage 1
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
                 {
-                    Debug.Log("yoga");
-                    inthevoid = hit1.collider.gameObject;
-                    hit1.collider.gameObject.SetActive(false);
+                    inthevoid = hit.collider.gameObject;
+                    hit.collider.gameObject.SetActive(false);
                 }
                 else if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
