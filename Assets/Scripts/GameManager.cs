@@ -5,16 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int stage = 4;
+    private int stage = 2;
     GameObject inthevoid = null;
     GameObject[] Allgos;
     BoxCollider2D bc;
-    RaycastHit2D hit;
+    Vector3 hit;
     public float shieldtime;
     public float currentshieldtime;
     public GameObject shield;
     public bool isShielded = false;
     public GameObject player;
+    public GameObject fireball;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
     public Vector3 lastCheckpoint = new Vector3(-8,0,0);
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
-        stage = SceneManager.GetActiveScene().buildIndex;
+        //stage = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -49,12 +50,12 @@ public class GameManager : MonoBehaviour
             case 1:
                 if (Input.GetMouseButtonDown(0))
                 {// ce bloc pour le pouvoir du stage 1
-                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
+                    //Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                   /* if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
                     {
                         inthevoid = hit.collider.gameObject;
                         hit.collider.gameObject.SetActive(false);
-                    }
+                    }*/
                 }
                 else if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
@@ -65,11 +66,14 @@ public class GameManager : MonoBehaviour
 
             case 2:
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
-                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                if (hit.collider.gameObject.tag == "Destroyable" || hit.collider.gameObject.tag == "Ennemy")
                 {
-                    hit.collider.gameObject.SetActive(false);
+                    hit = Camera.main.ScreenToWorldPoint(Input.mousePosition);//hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
+                    Debug.Log(hit);
+                    //Fireball.transform.LookAt(hit);
+                    //Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,0,1));
                 }
+                //gameObject.SetActive(false);
                 break;
             case 3:
                 if (Input.GetMouseButtonDown(0))
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour
             default:
                 if (Input.GetMouseButtonDown(0))
                 {
-                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    /*hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                     switch (hit.collider.name)
                     {
                         case "Docteur":
@@ -136,7 +140,7 @@ public class GameManager : MonoBehaviour
                             tm.text = "";
                             tm.font = new Font("Arial");
                             break;
-                    }
+                    }*/
                 }
                 break;
         }
