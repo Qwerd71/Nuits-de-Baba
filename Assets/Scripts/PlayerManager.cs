@@ -42,7 +42,7 @@ public class PlayerManager: MonoBehaviour
         if (collision.collider.tag.Equals("Enemy"))
         {
             if ((life -= 1) == 0)
-                Debug.Log("ici");
+                Debug.Log("Mort");
 
             
         }

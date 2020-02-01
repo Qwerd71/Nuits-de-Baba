@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
 
-    private int stage = 3;
+    private int stage;
     GameObject inthevoid = null;
     GameObject[] Allgos;
     bool onMap1 = true;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
+        stage = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -62,5 +64,10 @@ public class GameManager : MonoBehaviour
                     ;
                     break;
         }
+    }
+
+    private void Restart()
+    {
+        
     }
 }
