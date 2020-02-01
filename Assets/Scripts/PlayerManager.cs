@@ -115,6 +115,7 @@ public class PlayerManager: MonoBehaviour
                         break;
                     case (0):
                         LoseLife(Heart1);
+                        Death();
                         break;
                 }
             }
@@ -126,9 +127,8 @@ public class PlayerManager: MonoBehaviour
     }
     private void LoseLife(GameObject Heart)
     {
-        Heart_f = Heart.transform.GetChild(0).gameObject;
-        Heart_b = Heart.transform.GetChild(1).gameObject;
         Heart_b.SetActive(true);
         Heart_f.SetActive(false);
+        GameManager.Instance.Reset();
     }
 }
