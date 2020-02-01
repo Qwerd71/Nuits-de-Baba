@@ -139,7 +139,7 @@ public class PlayerManager: MonoBehaviour
                     Death();
                     break;
             }
-            rb.AddForce((transform.position - collision.collider.transform.position) * 100);
+            rb.AddForce((transform.position - collision.collider.transform.position) * 1000);
         }
     }
 
