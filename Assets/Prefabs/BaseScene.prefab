@@ -50,7 +50,9 @@ MonoBehaviour:
   player: {fileID: 439419085534215311}
   fireball: {fileID: 6741243947662047482, guid: 7c66d6262a27b3a4e8a897740255da11,
     type: 3}
-  lastCheckpoint: {x: -8, y: 0, z: 0}
+  lastCheckpoint: {x: -8, y: 0}
+  mat1: {fileID: 0}
+  mat2: {fileID: 0}
 --- !u!1 &163823358605382575
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +904,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1725311715189937244}
     m_Modifications:
+    - target: {fileID: 1778872145699648593, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778872145699648593, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
+        type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4987984110269235465, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
       propertyPath: Heart1
@@ -917,6 +929,11 @@ PrefabInstance:
       propertyPath: Heart3
       value: 
       objectReference: {fileID: 7114050233107561481}
+    - target: {fileID: 4987984110269235465, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
+        type: 3}
+      propertyPath: JumpSpeed
+      value: 19000
+      objectReference: {fileID: 0}
     - target: {fileID: 5634772436549679417, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
       propertyPath: m_LocalPosition.x
