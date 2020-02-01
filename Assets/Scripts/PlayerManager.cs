@@ -15,10 +15,18 @@ public class PlayerManager: MonoBehaviour
     public float invincibilityTime;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
-    public GameObject Heart;
-    public GameObject Heart_b;
-    public GameObject Heart_f;
+
+    public GameObject Heart1;
+    public GameObject Heart_b1;
+    public GameObject Heart_f1;
+    public GameObject Heart2;
+    public GameObject Heart_b2;
+    public GameObject Heart_f2;
+    public GameObject Heart3;
+    public GameObject Heart_b3;
+    public GameObject Heart_f3;
     public GameObject Brokenheart;
+    
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
     public float flickerTime = 3;
@@ -53,8 +61,12 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Heart_f = Heart.transform.GetChild(0).gameObject;
-        Heart_b = Heart.transform.GetChild(1).gameObject;
+        Heart_f1 = Heart1.transform.GetChild(0).gameObject;
+        Heart_b1 = Heart1.transform.GetChild(1).gameObject;
+        Heart_f2 = Heart2.transform.GetChild(0).gameObject;
+        Heart_b2 = Heart2.transform.GetChild(1).gameObject;
+        Heart_f3 = Heart3.transform.GetChild(0).gameObject;
+        Heart_b3 = Heart3.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -109,16 +121,15 @@ public class PlayerManager: MonoBehaviour
                 switch (life)
                 {
                     case (2):
-                        Instantiate(Brokenheart, Camera.main.transform.position, zero) ;
-                        Destroy(Heart3);
+                        Heart_b3.SetActive(true);
+                        Heart_f3.SetActive(false);
                         break;
                     case (1):
-                        Vector3 posHeart2 = Heart2.transform.position;
-                        Instantiate(Brokenheart, posHeart2, zero);
+                        Heart_b2.SetActive(true);
+                        Heart_f2.SetActive(false);
                         break;
                     case (0):
-                        Vector3 posHeart1 = Heart1.transform.position;
-                        Instantiate(Brokenheart, posHeart1, zero);
+                        Death;
                         break;
                 }
             }
@@ -126,8 +137,8 @@ public class PlayerManager: MonoBehaviour
     }
     private void Death()
     {
-        Heart_b.SetActive(true);
-        Heart_f.SetActive(false);
+        Heart_b1.SetActive(true);
+        Heart_f1.SetActive(false);
         GameManager.Instance.Reset();
     }
 }
