@@ -21,6 +21,7 @@ public class PlayerManager: MonoBehaviour
     public GameObject Heart3;
     private GameObject Heart_b;
     private GameObject Heart_f;
+    public Animator animator;
 
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
@@ -68,6 +69,8 @@ public class PlayerManager: MonoBehaviour
         }
 
         Horizontal = Input.GetAxis("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(Horizontal));
+
         if (Horizontal < 0)
             spriteRenderer.flipX = true;
         else if (Horizontal > 0)
