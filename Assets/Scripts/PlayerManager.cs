@@ -15,10 +15,11 @@ public class PlayerManager: MonoBehaviour
     public float invincibilityTime;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
-    public GameObject Heart;
-    public GameObject Heart_b;
-    public GameObject Heart_f;
-    public GameObject Brokenheart;
+    public GameObject Heart1;
+    public GameObject Heart2;
+    public GameObject Heart3;
+    private GameObject Heart_b;
+    private GameObject Heart_f;
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
     public float flickerTime = 3;
@@ -53,8 +54,6 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Heart_f = Heart.transform.GetChild(0).gameObject;
-        Heart_b = Heart.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -71,7 +70,7 @@ public class PlayerManager: MonoBehaviour
         else if (Horizontal > 0)
             spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
-
+        /*
         if (Time.time >= currentinvincibilityTime)
             isInvincible = false;
         if (isInvincible && !GameManager.Instance.isShielded)
@@ -88,7 +87,7 @@ public class PlayerManager: MonoBehaviour
         }
         else
             sr.enabled = true;
-
+            */
         
             
     }
@@ -109,16 +108,13 @@ public class PlayerManager: MonoBehaviour
                 switch (life)
                 {
                     case (2):
-                        Instantiate(Brokenheart, Camera.main.transform.position, zero) ;
-                        Destroy(Heart3);
+                        LoseLife(Heart3);
                         break;
                     case (1):
-                        Vector3 posHeart2 = Heart2.transform.position;
-                        Instantiate(Brokenheart, posHeart2, zero);
+                        LoseLife(Heart2);
                         break;
                     case (0):
-                        Vector3 posHeart1 = Heart1.transform.position;
-                        Instantiate(Brokenheart, posHeart1, zero);
+                        LoseLife(Heart1);
                         break;
                 }
             }
@@ -126,8 +122,13 @@ public class PlayerManager: MonoBehaviour
     }
     private void Death()
     {
+        GameManager.Instance.Reset();
+    }
+    private void LoseLife(GameObject Heart)
+    {
+        Heart_f = Heart.transform.GetChild(0).gameObject;
+        Heart_b = Heart.transform.GetChild(1).gameObject;
         Heart_b.SetActive(true);
         Heart_f.SetActive(false);
-        GameManager.Instance.Reset();
     }
 }
