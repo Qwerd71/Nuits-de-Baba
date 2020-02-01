@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool isShielded = false;
     public GameObject player;
     public GameObject fireball;
+    private GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
     public Vector2 lastCheckpoint = new Vector3(-8,0,0);
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
         stage = SceneManager.GetActiveScene().buildIndex;
-        stage = SceneManager.GetActiveScene().buildIndex;
+        PowBar = Camera.main.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         switch (stage)
         {
             case 1:
+<<<<<<< HEAD
                 if (Input.GetMouseButtonDown(0))
                 {
                     // ce bloc pour le pouvoir du stage 1
@@ -70,6 +72,23 @@ public class GameManager : MonoBehaviour
                         inthevoid.SetActive(true);
                         inthevoid = null;
                     }  
+=======
+                if (Input.GetMouseButtonDown(0) && inthevoid != null)
+                {
+                    inthevoid.SetActive(true);
+                    inthevoid = null;
+>>>>>>> 6968a828a76fa060477ef86ac719d02ed2b284f5
+                }
+                else if (Input.GetMouseButtonDown(0))
+                {// ce bloc pour le pouvoir du stage 1
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (denyhit.collider != null)
+                        if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
+                        {
+                            inthevoid = denyhit.collider.gameObject;
+                            denyhit.collider.gameObject.SetActive(false);
+                            PowBar.GetComponent<Animator>().Play("Pouv_empty");
+                        }
                 }
                 break;
 
@@ -77,12 +96,21 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
                     flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                        GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
+                        GameObject Fireball = Instantiate(fireball, player.transform.position, Quaternion.identity);
 
-                        Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
-                        Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
-                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((flamehit - Fireball.transform.position).x, (flamehit - Fireball.transform.position).y) * 50);
+                    Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
+                    if (flamehit.x - player.transform.position.x < 0)
+                        Fireball.GetComponent<SpriteRenderer>().flipX = true;
+
+                    Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
+                    var Direction = flamehit - Fireball.transform.position;
+                    Direction = Direction - new Vector3(0, 0, Direction.z);
+                    Direction = Direction.normalized;
+
+                    Fireball.GetComponent<Rigidbody2D>().AddForce( Direction*1000);
                         Destroy(Fireball, 2f);
+      
+                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_full");
                 }
                 //gameObject.SetActive(false);
                 break;
@@ -112,6 +140,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (denyhit.collider != null)
                     switch (denyhit.collider.name)
                     {
                         case "Docteur":
@@ -147,12 +176,15 @@ public class GameManager : MonoBehaviour
                             tm.font = new Font("Arial");
                             break;
                         case "Family1":
-                            tm.text = "";
+                            tm.text = "...";
                             tm.font = new Font("Arial");
                             break;
                         case "Family2":
                             tm.text = "";
                             tm.font = new Font("Arial");
+                            break;
+                        default:
+                            Debug.Log("Rien");
                             break;
                     }
                 }
