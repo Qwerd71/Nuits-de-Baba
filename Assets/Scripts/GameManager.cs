@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     private int stage = 2;
     GameObject inthevoid = null;
     GameObject[] Allgos;
-    bool onMap1 = true;
     BoxCollider2D bc;
     Vector3 hit;
     public float shieldtime;
@@ -155,8 +154,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public void Reset()
-    {  
-        //Remplir les coeurs 
-        //Mettre les current""time à 0
+    {
+        SceneManager.LoadScene(stage);
     }
 }

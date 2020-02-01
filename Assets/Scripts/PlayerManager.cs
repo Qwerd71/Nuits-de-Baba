@@ -85,7 +85,7 @@ public class PlayerManager: MonoBehaviour
             currentflickerTime = flickerTime + Time.time;
         if (Time.time <= currentflickerTime)
         {
-            if (temp < 0.5)
+            if (temp < 0.25)
                 temp += Time.deltaTime;
             else
             {
@@ -168,7 +168,6 @@ public class PlayerManager: MonoBehaviour
             }
         }
     }
-	
     private void Death()
     {
         GameManager.Instance.Reset();
@@ -179,6 +178,5 @@ public class PlayerManager: MonoBehaviour
         Heart_f = Heart.transform.GetChild(0).gameObject;
         Heart_b.SetActive(true);
         Heart_f.SetActive(false);
-        GameManager.Instance.Reset();
     }
 }
