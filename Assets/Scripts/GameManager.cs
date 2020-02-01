@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     GameObject inthevoid = null;
     GameObject[] Allgos;
     BoxCollider2D bc;
-    Vector3 hit3;
-    RaycastHit2D hit;
+    RaycastHit2D denyhit;
+    Vector3 flamehit;
     public float shieldtime;
     public float currentshieldtime;
     public GameObject shield;
@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject fireball;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
-    public Vector3 lastCheckpoint = new Vector3(-8,0,0);
+    public Vector2 lastCheckpoint = new Vector3(-8,0,0);
     static GameManager _instancegm;
+    public Material mat1;
+    public Material mat2;
     public static GameManager Instance
     {
         get
@@ -40,7 +42,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
-        //stage = SceneManager.GetActiveScene().buildIndex;
+        stage = SceneManager.GetActiveScene().buildIndex;
+        stage = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -51,11 +54,11 @@ public class GameManager : MonoBehaviour
             case 1:
                 if (Input.GetMouseButtonDown(0))
                 {// ce bloc pour le pouvoir du stage 1
-                    //Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                   if (inthevoid == null && hit.collider.gameObject.tag == "Destroyable")
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
                     {
-                        inthevoid = hit.collider.gameObject;
-                        hit.collider.gameObject.SetActive(false);
+                        inthevoid = denyhit.collider.gameObject;
+                        denyhit.collider.gameObject.SetActive(false);
                     }
                 }
                 else if (Input.GetMouseButtonDown(0) && inthevoid != null)
@@ -68,12 +71,12 @@ public class GameManager : MonoBehaviour
             case 2:
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
-                    hit3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
 
-                        Fireball.transform.LookAt(new Vector2(hit3.x, hit3.y));
+                        Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
                         Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
-                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((hit3 - Fireball.transform.position).x, (hit3 - Fireball.transform.position).y) * 50);
+                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((flamehit - Fireball.transform.position).x, (flamehit - Fireball.transform.position).y) * 50);
                         Destroy(Fireball, 2f);
                 }
                 //gameObject.SetActive(false);
@@ -84,7 +87,10 @@ public class GameManager : MonoBehaviour
                     foreach (GameObject go in Allgos)
                     {
                         go.GetComponent<Collider2D>().isTrigger = !go.GetComponent<Collider2D>().isTrigger; //à changer pour boxcollider2D
-                        // Changer les couleurs pour passer au négatif.
+                        if (go.GetComponent<Collider2D>().isTrigger)
+                            go.GetComponent<SpriteRenderer>().material = mat2;
+                        else
+                            go.GetComponent<SpriteRenderer>().material = mat1;
                     }
                 }
                 break;
@@ -100,8 +106,8 @@ public class GameManager : MonoBehaviour
             default:
                 if (Input.GetMouseButtonDown(0))
                 {
-                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    switch (hit.collider.name)
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    switch (denyhit.collider.name)
                     {
                         case "Docteur":
                             tm.text = "I'm sorry. We made all we could but we couldn't save her. My apologies.";
