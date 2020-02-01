@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -128,6 +128,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 439305975}
     m_Modifications:
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6988507471593336850, guid: 688604905adcb7342ba1add157d25415,
         type: 3}
       propertyPath: m_Name
@@ -749,6 +769,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 439305975}
     m_Modifications:
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6988507471593336850, guid: 688604905adcb7342ba1add157d25415,
         type: 3}
       propertyPath: m_Name
@@ -1308,6 +1348,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 439305975}
     m_Modifications:
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977350934708145855, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1547443091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988507470741160906, guid: 688604905adcb7342ba1add157d25415,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6988507471593336850, guid: 688604905adcb7342ba1add157d25415,
         type: 3}
       propertyPath: m_Name
