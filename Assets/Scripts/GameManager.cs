@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (denyhit.collider != null)
                     switch (denyhit.collider.name)
                     {
                         case "Docteur":
@@ -148,6 +149,9 @@ public class GameManager : MonoBehaviour
                         case "Family2":
                             tm.text = "";
                             tm.font = new Font("Arial");
+                            break;
+                        default:
+                            Debug.Log("Rien");
                             break;
                     }
                 }
