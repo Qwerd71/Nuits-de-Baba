@@ -68,14 +68,12 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
                     hit = Camera.main.ScreenToWorldPoint(Input.mousePosition);//hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    if ((hit - player.transform.position).x > 0)
-                    {
                         GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
 
                         Fireball.transform.LookAt(new Vector2(hit.x, hit.y));
                         Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
                         Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((hit - Fireball.transform.position).x, (hit - Fireball.transform.position).y) * 50);
-                    }
+                        Destroy(Fireball, 2f);
                 }
                 //gameObject.SetActive(false);
                 break;
