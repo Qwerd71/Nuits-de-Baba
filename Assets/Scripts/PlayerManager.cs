@@ -11,10 +11,13 @@ public class PlayerManager: MonoBehaviour
     public bool Jumping = false;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    public int life = 3;
+    public int life = 1;
     public float invincibilityTime;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
+    public GameObject Heart;
+    private GameObject Heart_b;
+    private GameObject Heart_f;
 
     static PlayerManager _instancepm;
 
@@ -44,6 +47,8 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Heart_f = Heart.transform.GetChild(0).gameObject;
+        Heart_b = Heart.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -68,11 +73,9 @@ public class PlayerManager: MonoBehaviour
     {
         if (collision.collider.tag.Equals("Floor") || collision.collider.tag.Equals("Destroyable"))
             Jumping = false;
-    }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Enemy" && isInvincible == false)
+        if (collision.collider.tag.Equals("Enemy") && isInvincible == false)
         {
+            Debug.Log(life);
             if ((life -= 1) == 0)
                 Death();
             else
@@ -85,6 +88,8 @@ public class PlayerManager: MonoBehaviour
     }
     private void Death()
     {
+        Heart_b.SetActive(true);
+        Heart_f.SetActive(false);
         GameManager.Instance.Reset();
     }
 }
