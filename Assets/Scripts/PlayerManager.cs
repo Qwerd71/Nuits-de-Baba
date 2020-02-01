@@ -85,7 +85,7 @@ public class PlayerManager: MonoBehaviour
             currentflickerTime = flickerTime + Time.time;
         if (Time.time <= currentflickerTime)
         {
-            if (temp < 0.5)
+            if (temp < 0.25)
                 temp += Time.deltaTime;
             else
             {
@@ -142,9 +142,7 @@ public class PlayerManager: MonoBehaviour
             rb.AddForce((transform.position - collision.collider.transform.position) * 100);
         }
     }
-<<<<<<< HEAD
-    
-=======
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.tag);
@@ -170,7 +168,6 @@ public class PlayerManager: MonoBehaviour
             }
         }
     }
->>>>>>> 81b48bd6de821a7a3fb0cc67cf4cc994e8b63792
     private void Death()
     {
         GameManager.Instance.Reset();
@@ -181,6 +178,5 @@ public class PlayerManager: MonoBehaviour
         Heart_f = Heart.transform.GetChild(0).gameObject;
         Heart_b.SetActive(true);
         Heart_f.SetActive(false);
-        GameManager.Instance.Reset();
     }
 }
