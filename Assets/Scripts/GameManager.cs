@@ -18,14 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
-    public Vector3 lastCheckpoint;
-    
-    
-
+    public Vector3 lastCheckpoint = new Vector3(-8,0,0);
     static GameManager _instancegm;
-
     public static GameManager Instance
-
     {
         get
         {
@@ -39,9 +34,7 @@ public class GameManager : MonoBehaviour
             }
             return _instancegm;
         }
-
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -154,7 +147,6 @@ public class GameManager : MonoBehaviour
         }
     }
     public void Reset()
-    {
-        
+    {  
     }
 }
