@@ -15,11 +15,13 @@ public class PlayerManager: MonoBehaviour
     public float invincibilityTime;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
+
     public GameObject Heart1;
     public GameObject Heart2;
     public GameObject Heart3;
     private GameObject Heart_b;
     private GameObject Heart_f;
+
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
     public float flickerTime = 3;
@@ -95,29 +97,25 @@ public class PlayerManager: MonoBehaviour
     {
         if (collision.collider.tag.Equals("Floor") || collision.collider.tag.Equals("Destroyable"))
             Jumping = false;
-        if (collision.collider.tag.Equals("Enemy") && isInvincible == false) 
+        if (collision.collider.tag.Equals("Enemy") && isInvincible == false)
 
         {
             Debug.Log(life);
-            if ((life -= 1) == 0)
-                Death();
-            else
+            life -= 1;
+            /*isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;*/
+            switch (life)
             {
-                isInvincible = true;
-                currentinvincibilityTime = invincibilityTime + Time.time;
-                switch (life)
-                {
-                    case (2):
-                        LoseLife(Heart3);
-                        break;
-                    case (1):
-                        LoseLife(Heart2);
-                        break;
-                    case (0):
-                        LoseLife(Heart1);
-                        Death();
-                        break;
-                }
+                case (2):
+                    LoseLife(Heart3);
+                    break;
+                case (1):
+                    LoseLife(Heart2);
+                    break;
+                case (0):
+                    LoseLife(Heart1);
+                    Death();
+                    break;
             }
         }
     }
@@ -127,6 +125,8 @@ public class PlayerManager: MonoBehaviour
     }
     private void LoseLife(GameObject Heart)
     {
+        Heart_b = Heart.transform.GetChild(1).gameObject;
+        Heart_f = Heart.transform.GetChild(0).gameObject;
         Heart_b.SetActive(true);
         Heart_f.SetActive(false);
         GameManager.Instance.Reset();
