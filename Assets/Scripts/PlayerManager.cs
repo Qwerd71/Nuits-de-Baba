@@ -10,6 +10,8 @@ public class PlayerManager: MonoBehaviour
     float Horizontal;
     public bool Jumping = false;
     Rigidbody2D rb;
+    private int life = 3;
+    public int invicibilityFrames;
     
 
 
@@ -32,7 +34,18 @@ public class PlayerManager: MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("Floor"))
+        if (collision.collider.tag.Equals("Floor") || collision.collider.tag.Equals("Destroyable"))
             Jumping = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            if ((life -= 1) == 0)
+                ;
+
+            
+        }
+            //Graphics : lost heart
     }
 }

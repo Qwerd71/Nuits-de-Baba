@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
 
-    private int stage = 1;
+    private int stage = 3;
     GameObject inthevoid = null;
     GameObject[] Allgos;
     bool onMap1 = true;
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 2:
-                if (Input.GetMouseButtonDown(0) && Physics.Raycast // ce bloc pour le pouvoir du stage 2
-                (Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit2)
-                && hit2.collider.gameObject.tag == "Destroyable")
+                if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider.gameObject.tag == "Destroyable" || hit.collider.gameObject.tag == "Ennemy")
                 {
-                    hit2.collider.gameObject.SetActive(false);
+                    hit.collider.gameObject.SetActive(false);
                 }
                 break;
             case 3:
