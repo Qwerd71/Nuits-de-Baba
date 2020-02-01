@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
     public float shieldtime;
     public float currentshieldtime;
     public GameObject shield;
-    private bool isShielded = false;
+    public bool isShielded = false;
     public GameObject player;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
+    
     
 
     static GameManager _instancegm;

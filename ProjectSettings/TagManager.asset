@@ -7,6 +7,10 @@ TagManager:
   - Floor
   - Destroyable
   - Enemy
+<<<<<<< HEAD
+  - NPC
+=======
+>>>>>>> ddbc11c4a935f15bb0153618f48c8c03ff82b96a
   layers:
   - Default
   - TransparentFX
