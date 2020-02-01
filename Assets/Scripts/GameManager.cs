@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isShielded = false;
     public GameObject player;
     public GameObject fireball;
+    private GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
     public Vector2 lastCheckpoint = new Vector3(-8,0,0);
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
         stage = SceneManager.GetActiveScene().buildIndex;
-        stage = SceneManager.GetActiveScene().buildIndex;
+        PowBar = Camera.main.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
                     {
                         inthevoid = denyhit.collider.gameObject;
                         denyhit.collider.gameObject.SetActive(false);
+                        PowBar.GetComponent<Animation>().Play("Pouv_empty");
                     }
                 }
                 else if (Input.GetMouseButtonDown(0) && inthevoid != null)
@@ -72,12 +74,21 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
                     flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                        GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
+                        GameObject Fireball = Instantiate(fireball, player.transform.position, Quaternion.identity);
 
-                        Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
-                        Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
-                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((flamehit - Fireball.transform.position).x, (flamehit - Fireball.transform.position).y) * 50);
+                    Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
+                    if (flamehit.x - player.transform.position.x < 0)
+                        Fireball.GetComponent<SpriteRenderer>().flipX = true;
+
+                    Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
+                    var Direction = flamehit - Fireball.transform.position;
+                    Direction = Direction - new Vector3(0, 0, Direction.z);
+                    Direction = Direction.normalized;
+
+                    Fireball.GetComponent<Rigidbody2D>().AddForce( Direction*1000);
                         Destroy(Fireball, 2f);
+      
+                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_full");
                 }
                 //gameObject.SetActive(false);
                 break;
@@ -143,7 +154,7 @@ public class GameManager : MonoBehaviour
                             tm.font = new Font("Arial");
                             break;
                         case "Family1":
-                            tm.text = "";
+                            tm.text = "...";
                             tm.font = new Font("Arial");
                             break;
                         case "Family2":
