@@ -11,19 +11,20 @@ public class PlayerManager: MonoBehaviour
     public bool Jumping = false;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    public int life = 3;
+    public int life = 1;
     public float invincibilityTime;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
-    public GameObject Heart1;
-    public GameObject Heart2;
-    public GameObject Heart3;
+    public GameObject Heart;
+    public GameObject Heart_b;
+    public GameObject Heart_f;
     public GameObject Brokenheart;
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
     public float flickerTime = 3;
     public float currentflickerTime;
     private float temp = 0;
+
     static PlayerManager _instancepm;
 
     public static PlayerManager Instance
@@ -52,6 +53,8 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Heart_f = Heart.transform.GetChild(0).gameObject;
+        Heart_b = Heart.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -93,9 +96,10 @@ public class PlayerManager: MonoBehaviour
     {
         if (collision.collider.tag.Equals("Floor") || collision.collider.tag.Equals("Destroyable"))
             Jumping = false;
-    
         if (collision.collider.tag.Equals("Enemy") && isInvincible == false) 
+
         {
+            Debug.Log(life);
             if ((life -= 1) == 0)
                 Death();
             else
@@ -122,6 +126,8 @@ public class PlayerManager: MonoBehaviour
     }
     private void Death()
     {
+        Heart_b.SetActive(true);
+        Heart_f.SetActive(false);
         GameManager.Instance.Reset();
     }
 }
