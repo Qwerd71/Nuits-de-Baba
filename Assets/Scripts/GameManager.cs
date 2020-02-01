@@ -148,5 +148,7 @@ public class GameManager : MonoBehaviour
     }
     public void Reset()
     {  
+        //Remplir les coeurs 
+        //Mettre les current""time à 0
     }
 }

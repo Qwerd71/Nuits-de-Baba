@@ -12,9 +12,10 @@ public class PlayerManager: MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     public int life = 1;
-    public float invincibilityTime;
+    public float invincibilityTime = 3;
     public float currentinvincibilityTime;
     public bool isInvincible = false;
+    RaycastHit2D hit;
 
     public GameObject Heart1;
     public GameObject Heart2;
@@ -134,8 +135,10 @@ public class PlayerManager: MonoBehaviour
                     Death();
                     break;
             }
+            rb.AddForce((transform.position - collision.collider.transform.position) * 100);
         }
     }
+    
     private void Death()
     {
         GameManager.Instance.Reset();
