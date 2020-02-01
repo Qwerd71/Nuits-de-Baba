@@ -18,8 +18,8 @@ public class CameraManager : MonoBehaviour
     {
         if (Player != null)
         {
-            var Target = Player.transform.position + offset;
-            transform.position = Vector3.Lerp(transform.position, Target, Time.time * 0.001f);
+            var Target = Player.transform.position + offset - (Vector3.right * 2);
+            transform.position = Target;
         }
     }
 }

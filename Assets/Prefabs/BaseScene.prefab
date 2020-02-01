@@ -907,12 +907,12 @@ PrefabInstance:
     - target: {fileID: 1778872145699648593, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1778872145699648593, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4987984110269235465, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
@@ -932,7 +932,12 @@ PrefabInstance:
     - target: {fileID: 4987984110269235465, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
       propertyPath: JumpSpeed
-      value: 19000
+      value: 18000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987984110269235465, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5634772436549679417, guid: 1c31d28317d1ff34b8fcc35ed9bb5654,
         type: 3}
