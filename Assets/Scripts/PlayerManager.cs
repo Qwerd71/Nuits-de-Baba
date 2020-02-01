@@ -13,6 +13,7 @@ public class PlayerManager: MonoBehaviour
     SpriteRenderer spriteRenderer;
     public int life = 1;
     public float invincibilityTime = 3;
+
     public float currentinvincibilityTime;
     public bool isInvincible = false;
     RaycastHit2D hit;
@@ -26,8 +27,6 @@ public class PlayerManager: MonoBehaviour
 
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
-    public float flickerTime = 3;
-    public float currentflickerTime;
     private float temp = 0;
 
     static PlayerManager _instancepm;
@@ -83,11 +82,10 @@ public class PlayerManager: MonoBehaviour
             spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
         
-        if (Time.time >= currentinvincibilityTime)
+        if (Time.time > currentinvincibilityTime)
             isInvincible = false;
-        if (isInvincible && !GameManager.Instance.isShielded)
-            currentflickerTime = flickerTime + Time.time;
-        if (Time.time <= currentflickerTime)
+            
+        if (Time.time <= currentinvincibilityTime)
         {
             if (temp < 0.25)
                 temp += Time.deltaTime;
