@@ -17,16 +17,11 @@ public class PlayerManager: MonoBehaviour
     public bool isInvincible = false;
 
     public GameObject Heart1;
-    public GameObject Heart_b1;
-    public GameObject Heart_f1;
     public GameObject Heart2;
-    public GameObject Heart_b2;
-    public GameObject Heart_f2;
     public GameObject Heart3;
-    public GameObject Heart_b3;
-    public GameObject Heart_f3;
-    public GameObject Brokenheart;
-    
+    private GameObject Heart_b;
+    private GameObject Heart_f;
+
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
     public float flickerTime = 3;
@@ -61,18 +56,12 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Heart_f1 = Heart1.transform.GetChild(0).gameObject;
-        Heart_b1 = Heart1.transform.GetChild(1).gameObject;
-        Heart_f2 = Heart2.transform.GetChild(0).gameObject;
-        Heart_b2 = Heart2.transform.GetChild(1).gameObject;
-        Heart_f3 = Heart3.transform.GetChild(0).gameObject;
-        Heart_b3 = Heart3.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && !Jumping) {
+        if ((Input.GetButtonDown("Jump")  || Input.GetKeyDown("space"))&& !Jumping) {
             rb.AddForce(new Vector2(0, JumpSpeed));
             Jumping = true;
         }
@@ -83,7 +72,7 @@ public class PlayerManager: MonoBehaviour
         else if (Horizontal > 0)
             spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
-
+        
         if (Time.time >= currentinvincibilityTime)
             isInvincible = false;
         if (isInvincible && !GameManager.Instance.isShielded)
@@ -100,7 +89,7 @@ public class PlayerManager: MonoBehaviour
         }
         else
             sr.enabled = true;
-
+            
         
             
     }
@@ -111,33 +100,34 @@ public class PlayerManager: MonoBehaviour
         if (collision.collider.tag.Equals("Enemy") && isInvincible == false)
         {
             Debug.Log(life);
-            if ((life -= 1) == 0)
-                Death();
-            else
+            life -= 1;
+            isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;
+            switch (life)
             {
-                isInvincible = true;
-                currentinvincibilityTime = invincibilityTime + Time.time;
-                switch (life)
-                {
-                    case (2):
-                        Heart_b3.SetActive(true);
-                        Heart_f3.SetActive(false);
-                        break;
-                    case (1):
-                        Heart_b2.SetActive(true);
-                        Heart_f2.SetActive(false);
-                        break;
-                    case (0):
-                        Death();
-                        break;
-                }
+                case (2):
+                    LoseLife(Heart3);
+                    break;
+                case (1):
+                    LoseLife(Heart2);
+                    break;
+                case (0):
+                    LoseLife(Heart1);
+                    Death();
+                    break;
             }
         }
     }
     private void Death()
     {
-        Heart_b1.SetActive(true);
-        Heart_f1.SetActive(false);
+        GameManager.Instance.Reset();
+    }
+    private void LoseLife(GameObject Heart)
+    {
+        Heart_b = Heart.transform.GetChild(1).gameObject;
+        Heart_f = Heart.transform.GetChild(0).gameObject;
+        Heart_b.SetActive(true);
+        Heart_f.SetActive(false);
         GameManager.Instance.Reset();
     }
 }
