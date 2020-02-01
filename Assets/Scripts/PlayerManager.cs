@@ -70,6 +70,7 @@ public class PlayerManager: MonoBehaviour
 
         Horizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(Horizontal));
+        animator.SetBool("Jumping", Jumping);
 
         if (Horizontal < 0)
             spriteRenderer.flipX = true;
