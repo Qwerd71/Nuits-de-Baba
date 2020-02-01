@@ -54,30 +54,10 @@ public class GameManager : MonoBehaviour
         switch (stage)
         {
             case 1:
-<<<<<<< HEAD
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // ce bloc pour le pouvoir du stage 1
-                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    if (denyhit.collider != null)
-                    {
-                        if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
-                        {
-                            inthevoid = denyhit.collider.gameObject;
-                            inthevoid.SetActive(false);
-                        }
-                    }
-                    else if (inthevoid != null)
-                    {
-                        inthevoid.SetActive(true);
-                        inthevoid = null;
-                    }  
-=======
                 if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
                     inthevoid.SetActive(true);
                     inthevoid = null;
->>>>>>> 6968a828a76fa060477ef86ac719d02ed2b284f5
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {// ce bloc pour le pouvoir du stage 1

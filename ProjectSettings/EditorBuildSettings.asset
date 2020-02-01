@@ -9,7 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Title screen.unity
     guid: eb7c55a92c8595249982a405ed6a0fc3
   - enabled: 1
-
     path: "Assets/Scenes/D\xE9ni.unity"
     guid: f0c0369ab5476e74bb9c8a280440e909
   - enabled: 1
@@ -19,15 +18,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/N\xE9gociation.unity"
     guid: 23898e61ea09b7e4aa0f40b0486f9f5b
   - enabled: 1
-    path: "Assets/Scenes/D\xE9pression.unity"
-    guid: 7338c39393d7bb742b38861eadcd9c3c
-
-  - enabled: 1
     path: Assets/Scenes/Acceptation.unity
     guid: b5b2a2c179905c847bd33d28f741d9c0
   - enabled: 1
-
-    path: "Assets/Scenes/D\xE9pression.unity"
-    guid: 7338c39393d7bb742b38861eadcd9c3c
-
+    path: Assets/Scenes/Tomb.unity
+    guid: 7f190bbcc2c995941bd76c510855e669
   m_configObjects: {}
