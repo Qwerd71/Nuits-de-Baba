@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
+    public Vector3 lastCheckpoint;
     
     
 
@@ -143,19 +144,14 @@ public class GameManager : MonoBehaviour
                             tm.text = "";
                             tm.font = new Font("Arial");
                             break;
-
                     }
-
-                        
                 }
-                
                 break;
         }
         if (isShielded && Time.time >= PlayerManager.Instance.currentinvincibilityTime)
         {
             Destroy(shield);
         }
-            
     }
     public void Reset()
     {
