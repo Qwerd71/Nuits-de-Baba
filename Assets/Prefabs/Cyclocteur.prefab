@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6070387992612624675}
   - component: {fileID: 7557346147704767145}
   - component: {fileID: -4937835874196798419}
+  - component: {fileID: 288370426877132206}
   m_Layer: 0
   m_Name: Cyclocteur
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6070387992612624676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.06, y: -0.95, z: 0}
-  m_LocalScale: {x: 3.826, y: 3.826, z: 3.826}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -149,4 +150,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &288370426877132206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070387992612624676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cc4d74903b3664e96ac83da0860593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformSpeed: 0
+  minposx: 0
+  maxposx: 0

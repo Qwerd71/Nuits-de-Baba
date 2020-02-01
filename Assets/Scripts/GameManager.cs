@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
     RaycastHit2D denyhit;
     Vector3 flamehit;
     public float shieldtime;
-    public float currentshieldtime;
+    public float currentshieldtime = 3;
     public GameObject shield;
+    private GameObject actualShield;
     public bool isShielded = false;
     public GameObject player;
     public GameObject fireball;
@@ -53,18 +54,22 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 if (Input.GetMouseButtonDown(0))
-                {// ce bloc pour le pouvoir du stage 1
-                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
-                    {
-                        inthevoid = denyhit.collider.gameObject;
-                        denyhit.collider.gameObject.SetActive(false);
-                    }
-                }
-                else if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
-                    inthevoid.SetActive(true);
-                    inthevoid = null;
+                    // ce bloc pour le pouvoir du stage 1
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (denyhit.collider != null)
+                    {
+                        if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
+                        {
+                            inthevoid = denyhit.collider.gameObject;
+                            inthevoid.SetActive(false);
+                        }
+                    }
+                    else if (inthevoid != null)
+                    {
+                        inthevoid.SetActive(true);
+                        inthevoid = null;
+                    }  
                 }
                 break;
 
@@ -97,8 +102,8 @@ public class GameManager : MonoBehaviour
             case 4:
                 if (Input.GetMouseButtonDown(0) && !isShielded) 
                 {
-                    Instantiate(shield,player.transform.position,zero,player.transform) ; // (?)
-                    PlayerManager.Instance.currentinvincibilityTime = Time.time + PlayerManager.Instance.invincibilityTime ;
+                    actualShield = Instantiate(shield,player.transform.position,zero,player.transform) ; // (?)
+                    PlayerManager.Instance.currentinvincibilityTime = Time.time + shieldtime ;
                     PlayerManager.Instance.isInvincible = true;
                     isShielded = true;
                 }
@@ -153,9 +158,11 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+        transform.position = GameManager.Instance.player.transform.position;
         if (isShielded && Time.time >= PlayerManager.Instance.currentinvincibilityTime)
         {
-            Destroy(shield);
+            Destroy(actualShield);
+            isShielded = false;
         }
     }
     public void Reset()
