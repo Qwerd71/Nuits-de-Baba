@@ -131,17 +131,8 @@ public class GameManager : MonoBehaviour
         }
             
     }
-
     public void Reset()
     {
         
     }
-    
-
-
-    private void Restart()
-    {
-        
-    }
-
 }

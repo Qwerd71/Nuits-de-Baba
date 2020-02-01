@@ -10,6 +10,7 @@ public class PlayerManager: MonoBehaviour
     float Horizontal;
     public bool Jumping = false;
     Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
     public int life = 3;
     public float invincibilityTime;
     public float currentinvincibilityTime;
@@ -42,6 +43,7 @@ public class PlayerManager: MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -56,6 +58,10 @@ public class PlayerManager: MonoBehaviour
         
 
         Horizontal = Input.GetAxis("Horizontal");
+        if (Horizontal < 0)
+            spriteRenderer.flipX = true;
+        else if (Horizontal > 0)
+            spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -74,7 +80,6 @@ public class PlayerManager: MonoBehaviour
                 isInvincible = true;
                 currentinvincibilityTime = invincibilityTime + Time.time;
             }
-
         }
             //Graphics : lost heart
     }
