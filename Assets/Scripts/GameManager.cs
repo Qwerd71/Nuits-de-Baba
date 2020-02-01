@@ -71,11 +71,13 @@ public class GameManager : MonoBehaviour
             case 2:
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
-                    flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);//hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
-                    Debug.Log(flamehit);
-                    //Fireball.transform.LookAt(hit);
-                    //Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,0,1));
+                    flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        GameObject Fireball = Instantiate(fireball, player.transform.position, fireball.transform.rotation);
+
+                        Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
+                        Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
+                        Fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2((flamehit - Fireball.transform.position).x, (flamehit - Fireball.transform.position).y) * 50);
+                        Destroy(Fireball, 2f);
                 }
                 //gameObject.SetActive(false);
                 break;
@@ -104,8 +106,8 @@ public class GameManager : MonoBehaviour
             default:
                 if (Input.GetMouseButtonDown(0))
                 {
-                    /*hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    switch (hit.collider.name)
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    switch (denyhit.collider.name)
                     {
                         case "Docteur":
                             tm.text = "I'm sorry. We made all we could but we couldn't save her. My apologies.";
@@ -147,7 +149,7 @@ public class GameManager : MonoBehaviour
                             tm.text = "";
                             tm.font = new Font("Arial");
                             break;
-                    }*/
+                    }
                 }
                 break;
         }
