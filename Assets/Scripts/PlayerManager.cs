@@ -72,7 +72,7 @@ public class PlayerManager: MonoBehaviour
         else if (Horizontal > 0)
             spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
-        /*
+        
         if (Time.time >= currentinvincibilityTime)
             isInvincible = false;
         if (isInvincible && !GameManager.Instance.isShielded)
@@ -89,7 +89,7 @@ public class PlayerManager: MonoBehaviour
         }
         else
             sr.enabled = true;
-            */
+            
         
             
     }
@@ -102,8 +102,8 @@ public class PlayerManager: MonoBehaviour
         {
             Debug.Log(life);
             life -= 1;
-            /*isInvincible = true;
-            currentinvincibilityTime = invincibilityTime + Time.time;*/
+            isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;
             switch (life)
             {
                 case (2):
