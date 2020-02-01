@@ -108,8 +108,7 @@ public class PlayerManager: MonoBehaviour
     {
         if (collision.collider.tag.Equals("Floor") || collision.collider.tag.Equals("Destroyable"))
             Jumping = false;
-        if (collision.collider.tag.Equals("Enemy") && isInvincible == false) 
-
+        if (collision.collider.tag.Equals("Enemy") && isInvincible == false)
         {
             Debug.Log(life);
             if ((life -= 1) == 0)
