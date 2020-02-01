@@ -9,6 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Title screen.unity
     guid: eb7c55a92c8595249982a405ed6a0fc3
   - enabled: 1
+
     path: "Assets/Scenes/D\xE9ni.unity"
     guid: f0c0369ab5476e74bb9c8a280440e909
   - enabled: 1
@@ -20,10 +21,13 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/D\xE9pression.unity"
     guid: 7338c39393d7bb742b38861eadcd9c3c
+
   - enabled: 1
     path: Assets/Scenes/Acceptation.unity
     guid: b5b2a2c179905c847bd33d28f741d9c0
   - enabled: 1
-    path: Assets/Scenes/Church_5.unity
-    guid: 835f852c21f68fc41a89cb378129933b
+
+    path: "Assets/Scenes/D\xE9pression.unity"
+    guid: 7338c39393d7bb742b38861eadcd9c3c
+
   m_configObjects: {}

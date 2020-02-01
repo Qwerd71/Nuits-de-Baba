@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movingplatform : MonoBehaviour
 {
-    bool movingLeft;
+    public bool movingLeft;
     public float platformSpeed;
     public float minposx;
     public float maxposx;
@@ -21,23 +21,19 @@ public class Movingplatform : MonoBehaviour
 
         if (transform.position.x > maxposx)
         {
-            Debug.Log("Moving left onward");
             movingLeft = true;
         }
         else if (transform.position.x < minposx)
         {
-            Debug.Log("Moving right onward");
             movingLeft = false;
         }
         if (movingLeft)
         {
             move = new Vector3(-Time.deltaTime * platformSpeed, 0, 0);
-            Debug.Log("actually moving left");
         }
         else
         {
             move = new Vector3(Time.deltaTime * platformSpeed, 0, 0);
-            Debug.Log("actually monving right");
         }
         transform.position += move;
     }
