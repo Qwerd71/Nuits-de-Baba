@@ -17,9 +17,9 @@ public class PlayerManager: MonoBehaviour
     public bool isInvincible = false;
     RaycastHit2D hit;
 
-    public GameObject Heart1;
-    public GameObject Heart2;
-    public GameObject Heart3;
+    private GameObject Heart1;
+    private GameObject Heart2;
+    private GameObject Heart3;
     private GameObject Heart_b;
     private GameObject Heart_f;
     public Animator animator;
@@ -58,6 +58,10 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Heart1 = Camera.main.transform.GetChild(1).gameObject;
+        Heart2 = Camera.main.transform.GetChild(2).gameObject;
+        Heart3 = Camera.main.transform.GetChild(3).gameObject;
+
         sr = GetComponent<SpriteRenderer>();
     }
 
