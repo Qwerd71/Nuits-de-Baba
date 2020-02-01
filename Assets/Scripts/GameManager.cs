@@ -7,11 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
 
-<<<<<<< HEAD
     private int stage = 4;
-=======
-    private int stage;
->>>>>>> 670296e5f38a1ba0bb4eba6625af343594ce42e5
     GameObject inthevoid = null;
     GameObject[] Allgos;
     bool onMap1 = true;
@@ -114,17 +110,9 @@ public class GameManager : MonoBehaviour
         }
             
     }
-<<<<<<< HEAD
+
     public void Reset()
     {
         
     }
-    
-=======
-
-    private void Restart()
-    {
-        
-    }
->>>>>>> 670296e5f38a1ba0bb4eba6625af343594ce42e5
 }
