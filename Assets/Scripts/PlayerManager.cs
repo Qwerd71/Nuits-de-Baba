@@ -12,13 +12,15 @@ public class PlayerManager: MonoBehaviour
     Rigidbody2D rb;
     private int life = 3;
     public int invicibilityFrames;
-    
+    SpriteRenderer spriteRenderer;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,10 @@ public class PlayerManager: MonoBehaviour
         }
 
         Horizontal = Input.GetAxis("Horizontal");
+        if (Horizontal < 0)
+            spriteRenderer.flipX = true;
+        else if (Horizontal > 0)
+            spriteRenderer.flipX = false;
         rb.velocity = new Vector2(Horizontal * MoveSpeed,rb.velocity.y);
     }
     private void OnCollisionEnter2D(Collision2D collision)
