@@ -68,18 +68,13 @@ public class PlayerManager: MonoBehaviour
         if (collision.collider.tag == "Enemy" && isInvincible == false)
         {
             if ((life -= 1) == 0)
-<<<<<<< HEAD
                 Death();
             else
             {
                 isInvincible = true;
                 currentinvincibilityTime = invincibilityTime + Time.time;
             }
-=======
-                Debug.Log("Mort");
 
-            
->>>>>>> 670296e5f38a1ba0bb4eba6625af343594ce42e5
         }
             //Graphics : lost heart
     }

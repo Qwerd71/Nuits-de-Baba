@@ -5,13 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-
-<<<<<<< HEAD
     private int stage = 4;
-=======
-    private int stage;
->>>>>>> 670296e5f38a1ba0bb4eba6625af343594ce42e5
     GameObject inthevoid = null;
     GameObject[] Allgos;
     bool onMap1 = true;
@@ -23,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool isShielded = false;
     public GameObject player;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
+    TextMesh tm;
     
 
     static GameManager _instancegm;
@@ -104,8 +99,30 @@ public class GameManager : MonoBehaviour
             default:
                 if (Input.GetMouseButtonDown(0))
                 {
-                    
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    switch (hit.collider.name)
+                    {
+                        case "NPC1":
+                            tm.text = "";
+                            tm.font = new Font("Arial");
+                            break;
+                        case "NPC2":
+                            tm.text = "";
+                            tm.font = new Font("Arial");
+                            break;
+                        case "NPC3":
+                            tm.text = "";
+                            tm.font = new Font("Arial");
+                            break;
+                        case "NPC4":
+                            tm.text = "";
+                            tm.font = new Font("Arial");
+                            break;
+                    }
+
+                        
                 }
+                
                 break;
         }
         if (isShielded && Time.time >= PlayerManager.Instance.currentinvincibilityTime)
@@ -114,17 +131,17 @@ public class GameManager : MonoBehaviour
         }
             
     }
-<<<<<<< HEAD
+
     public void Reset()
     {
         
     }
     
-=======
+
 
     private void Restart()
     {
         
     }
->>>>>>> 670296e5f38a1ba0bb4eba6625af343594ce42e5
+
 }
