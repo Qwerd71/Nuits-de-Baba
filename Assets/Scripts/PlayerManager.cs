@@ -59,7 +59,7 @@ public class PlayerManager: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && !Jumping) {
+        if ((Input.GetButtonDown("Jump")  || Input.GetKeyDown("space"))&& !Jumping) {
             rb.AddForce(new Vector2(0, JumpSpeed));
             Jumping = true;
         }
