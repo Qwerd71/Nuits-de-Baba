@@ -22,6 +22,7 @@ public class PlayerManager: MonoBehaviour
     public GameObject Heart3;
     private GameObject Heart_b;
     private GameObject Heart_f;
+    public Animator animator;
 
     private Quaternion zero = new Quaternion(0f,0f,0f,0f);
     SpriteRenderer sr;
@@ -69,6 +70,9 @@ public class PlayerManager: MonoBehaviour
         }
 
         Horizontal = Input.GetAxis("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(Horizontal));
+        animator.SetBool("Jumping", Jumping);
+
         if (Horizontal < 0)
             spriteRenderer.flipX = true;
         else if (Horizontal > 0)
@@ -138,7 +142,35 @@ public class PlayerManager: MonoBehaviour
             rb.AddForce((transform.position - collision.collider.transform.position) * 100);
         }
     }
+<<<<<<< HEAD
     
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        if (collision.tag.Equals("Floor") || collision.tag.Equals("Destroyable"))
+            Jumping = false;
+        if (collision.tag.Equals("Enemy") && isInvincible == false)
+        {
+            life -= 1;
+            isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;
+            switch (life)
+            {
+                case (2):
+                    LoseLife(Heart3);
+                    break;
+                case (1):
+                    LoseLife(Heart2);
+                    break;
+                case (0):
+                    LoseLife(Heart1);
+                    Death();
+                    break;
+            }
+        }
+    }
+>>>>>>> 81b48bd6de821a7a3fb0cc67cf4cc994e8b63792
     private void Death()
     {
         GameManager.Instance.Reset();
