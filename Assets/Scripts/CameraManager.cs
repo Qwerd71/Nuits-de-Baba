@@ -17,6 +17,6 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         if (Player != null)
-            transform.position = Vector3.Lerp(transform.position, Player.transform.position + offset, Time.time * 0.0005f);
+            transform.position = Vector3.Lerp(transform.position, Player.transform.position + offset, Time.time * 0.001f);
     }
 }

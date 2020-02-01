@@ -605,7 +605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 939ef5cae48a30646831270bdbc3bc8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17453c6a98f065e4a8642839a362d867, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -635,15 +635,25 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -3657347347527107589, guid: 9d4fa659b52047441ae56f5becf4a519,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 315011381050511188, guid: 9d4fa659b52047441ae56f5becf4a519,
         type: 3}
       propertyPath: m_Name
       value: Billy
       objectReference: {fileID: 0}
+    - target: {fileID: 315011381050511188, guid: 9d4fa659b52047441ae56f5becf4a519,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1200576689089433251, guid: 9d4fa659b52047441ae56f5becf4a519,
         type: 3}
       propertyPath: JumpSpeed
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1991458071445698195, guid: 9d4fa659b52047441ae56f5becf4a519,
         type: 3}
@@ -653,7 +663,7 @@ PrefabInstance:
     - target: {fileID: 1991458071445698195, guid: 9d4fa659b52047441ae56f5becf4a519,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6706656
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 1991458071445698195, guid: 9d4fa659b52047441ae56f5becf4a519,
         type: 3}
@@ -962,6 +972,8 @@ GameObject:
   - component: {fileID: 1410545507}
   - component: {fileID: 1410545505}
   - component: {fileID: 1410545506}
+  - component: {fileID: 1410545509}
+  - component: {fileID: 1410545508}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1034,6 +1046,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1410545508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410545504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_CameraOutput: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!114 &1410545509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410545504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfc08b6c8633cc429bf2482cb8e08b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 2112319974}
 --- !u!1001 &1472068496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1483,3 +1539,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94be74cb1997154e8bd8bed8cd4e211, type: 3}
+--- !u!1 &2112319974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 315011381050511188, guid: 9d4fa659b52047441ae56f5becf4a519,
+    type: 3}
+  m_PrefabInstance: {fileID: 1019998624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2112319980
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112319974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71430d012cc34d44f88b71b9a8f5cff9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
