@@ -53,20 +53,21 @@ public class GameManager : MonoBehaviour
         switch (stage)
         {
             case 1:
-                if (Input.GetMouseButtonDown(0))
-                {// ce bloc pour le pouvoir du stage 1
-                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
-                    {
-                        inthevoid = denyhit.collider.gameObject;
-                        denyhit.collider.gameObject.SetActive(false);
-                        PowBar.GetComponent<Animation>().Play("Pouv_empty");
-                    }
-                }
-                else if (Input.GetMouseButtonDown(0) && inthevoid != null)
+                if (Input.GetMouseButtonDown(0) && inthevoid != null)
                 {
                     inthevoid.SetActive(true);
                     inthevoid = null;
+                }
+                else if (Input.GetMouseButtonDown(0))
+                {// ce bloc pour le pouvoir du stage 1
+                    denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    if (denyhit.collider != null)
+                        if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
+                        {
+                            inthevoid = denyhit.collider.gameObject;
+                            denyhit.collider.gameObject.SetActive(false);
+                            PowBar.GetComponent<Animator>().Play("Pouv_empty");
+                        }
                 }
                 break;
 
