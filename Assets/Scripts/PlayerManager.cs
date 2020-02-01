@@ -136,6 +136,31 @@ public class PlayerManager: MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        if (collision.tag.Equals("Floor") || collision.tag.Equals("Destroyable"))
+            Jumping = false;
+        if (collision.tag.Equals("Enemy") && isInvincible == false)
+        {
+            life -= 1;
+            isInvincible = true;
+            currentinvincibilityTime = invincibilityTime + Time.time;
+            switch (life)
+            {
+                case (2):
+                    LoseLife(Heart3);
+                    break;
+                case (1):
+                    LoseLife(Heart2);
+                    break;
+                case (0):
+                    LoseLife(Heart1);
+                    Death();
+                    break;
+            }
+        }
+    }
     private void Death()
     {
         GameManager.Instance.Reset();
