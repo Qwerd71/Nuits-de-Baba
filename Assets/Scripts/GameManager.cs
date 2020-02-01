@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
                 {
                     foreach (GameObject go in Allgos)
                     {
-                        go.GetComponent<Collider>().isTrigger = !go.GetComponent<Collider>().isTrigger; //à changer pour boxcollider2D
+                        go.GetComponent<Collider2D>().isTrigger = !go.GetComponent<Collider2D>().isTrigger; //à changer pour boxcollider2D
                         // Changer les couleurs pour passer au négatif.
                     }
                 }

@@ -39,10 +39,10 @@ public class PlayerManager: MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (collision.collider.tag.Equals("Enemy"))
         {
             if ((life -= 1) == 0)
-                ;
+                Debug.Log("ici");
 
             
         }
