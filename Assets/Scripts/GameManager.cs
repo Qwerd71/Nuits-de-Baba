@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviour
                         Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
                         if (flamehit.x - player.transform.position.x < 0)
                             Fireball.GetComponent<SpriteRenderer>().flipX = true;
-
                         Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
                         var Direction = flamehit - Fireball.transform.position;
                         Direction = Direction - new Vector3(0, 0, Direction.z);
                         Direction = Direction.normalized;
+                        Fireball.transform.position += Direction * 3.5f;
 
                         Fireball.GetComponent<Rigidbody2D>().AddForce(Direction * 1000);
                         Destroy(Fireball, 2f);
