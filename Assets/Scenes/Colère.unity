@@ -2089,7 +2089,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseScene
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 1364390959734455672, guid: 0773b549cb12e9749863d5a26a264dbd,
         type: 3}
       propertyPath: JumpSpeed
@@ -2101,9 +2100,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1725311715189937244, guid: 0773b549cb12e9749863d5a26a264dbd,
-=======
-    - target: {fileID: 8595292125602889243, guid: d8b390bd52f865947801ce81bb8473e5,
->>>>>>> deb2d5588aab31269dfdbf6bf13a0a44609cef81
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.912322
@@ -2158,7 +2154,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2212,18 +2207,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2728605304186327227, guid: 0773b549cb12e9749863d5a26a264dbd,
         type: 3}
-<<<<<<< HEAD
     - target: {fileID: 5726460573187459104, guid: 0773b549cb12e9749863d5a26a264dbd,
         type: 3}
       propertyPath: m_Mass
       value: 15
       objectReference: {fileID: 0}
-=======
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 240dec9c9b52997409a6a2c8afb1e8c7, type: 2}
->>>>>>> e888b53061845edb8b790af1b114573e520ebea4
-=======
->>>>>>> deb2d5588aab31269dfdbf6bf13a0a44609cef81
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b390bd52f865947801ce81bb8473e5, type: 3}
