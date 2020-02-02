@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
-    public Vector2 lastCheckpoint = PlayerManager.Instance.transform.position;
+    public Vector2 lastCheckpoint;
     static GameManager _instancegm;
     public Material mat1;
     public Material mat2;
@@ -42,11 +42,14 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    
-    void Start()
+    private void Awake()
     {
-        
+        lastCheckpoint = PlayerManager.Instance.transform.position;
+    }
+    void Start()
+    { 
         Allgos = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log(Allgos.Length);
         stage = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -99,9 +102,11 @@ public class GameManager : MonoBehaviour
                     if (Input.GetMouseButtonDown(0))
                     {
                         Shader.SetGlobalFloat("IsWorldA", (Shader.GetGlobalFloat("IsWorldA") + 1) % 2);
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
-                    foreach (GameObject go in Allgos)
-                        go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
+                        foreach (GameObject go in Allgos)
+                        {
+                            go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
+                            Debug.Log("yoga");
+                        }
                     StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
