@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     static GameManager _instancegm;
     public Material mat1;
     public Material mat2;
+    public float textTimer;
+    bool textIsOn = false;
     public static GameManager Instance
     {
         get
@@ -49,10 +51,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        tm = Text.GetComponent<TextMesh>();
+        
         Allgos = GameObject.FindGameObjectsWithTag("Enemy");
-        Debug.Log(Allgos.Length);
         stage = SceneManager.GetActiveScene().buildIndex;
+        if (stage == 5)
+            tm = Text.GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
@@ -107,7 +110,6 @@ public class GameManager : MonoBehaviour
                         foreach (GameObject go in Allgos)
                         {
                             go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
-                            Debug.Log("yoga");
                         }
                     StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
@@ -124,8 +126,10 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 default:
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && Time.time > textTimer)
                     {
+                        Text.SetActive(true);
+                        textTimer += Time.time;
                         denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                         if (denyhit.collider != null)
                             switch (denyhit.collider.name)
@@ -183,6 +187,12 @@ public class GameManager : MonoBehaviour
             Destroy(actualShield);
             isShielded = false;
         }
+        if(Time.time > textTimer && stage == 5)
+        {
+            textIsOn = false;
+            Text.SetActive(false);
+        }
+
     }
     public void Reset()
     {
