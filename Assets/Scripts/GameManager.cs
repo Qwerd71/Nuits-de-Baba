@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject shield;
     private GameObject actualShield;
     public bool isShielded = false;
-    private bool End_Filling;
+    public bool End_fill = true;
     public GameObject player;
     public GameObject fireball;
     public GameObject PowBar;
@@ -46,14 +46,12 @@ public class GameManager : MonoBehaviour
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
         stage = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*End_Filling = PowBar.gameObject.GetComponent<Power>().End;
-        if (End_Filling)*/
+        if (End_fill)
             switch (stage)
             {
                 case 1:
@@ -65,13 +63,12 @@ public class GameManager : MonoBehaviour
                     else if (Input.GetMouseButtonDown(0))
                     {// ce bloc pour le pouvoir du stage 1
                         denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    Debug.Log(denyhit.collider.gameObject.tag);
                         if (denyhit.collider != null)
                             if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
                             {
                                 inthevoid = denyhit.collider.gameObject;
                                 denyhit.collider.gameObject.SetActive(false);
-                                PowBar.GetComponent<Animator>().Play("Pouv_empty");
+                                StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                             }
                     }
                     break;
@@ -93,9 +90,8 @@ public class GameManager : MonoBehaviour
 
                         Fireball.GetComponent<Rigidbody2D>().AddForce(Direction * 1000);
                         Destroy(Fireball, 2f);
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
-                    //gameObject.SetActive(false);
                     break;
                 case 3:
                     if (Input.GetMouseButtonDown(0))
@@ -108,7 +104,7 @@ public class GameManager : MonoBehaviour
                             else
                                 go.GetComponent<SpriteRenderer>().material = mat1;
                         }
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
                 case 4:
@@ -118,7 +114,7 @@ public class GameManager : MonoBehaviour
                         PlayerManager.Instance.currentinvincibilityTime = Time.time + shieldtime;
                         PlayerManager.Instance.isInvincible = true;
                         isShielded = true;
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
                 default:

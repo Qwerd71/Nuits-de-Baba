@@ -5,13 +5,13 @@ using UnityEngine;
 public class Jauge_Power : MonoBehaviour
 {
 
-    Vector3 scale;
+    private RectTransform scale;
+    public GameObject GameManage;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        scale = GetComponent<RectTransform>().localScale;
-        StartCoroutine(PowerJaugeCoroutine());
+        scale = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -19,15 +19,16 @@ public class Jauge_Power : MonoBehaviour
     {
         
     }
-
     public IEnumerator PowerJaugeCoroutine()
     {
-        scale = new Vector3(0,scale.y,scale.z);
-        for(float t = 5; t < 10; t += Time.deltaTime)
+        GameManage.GetComponent<GameManager>().End_fill = false;
+        scale.localScale = new Vector3(0,scale.localScale.y,scale.localScale.z);
+        for (float t = 5; t < 7; t += Time.deltaTime)
         {
             yield return new WaitForEndOfFrame();
-            scale = new Vector3(Mathf.InverseLerp(5, 10, t), scale.y, scale.z);
+            scale.localScale = new Vector3(Mathf.InverseLerp(5, 7, t), scale.localScale.y, scale.localScale.z);
         }
-        scale = new Vector3(1, scale.y, scale.z);
+        scale.localScale = new Vector3(1, scale.localScale.y, scale.localScale.z);
+        GameManage.GetComponent<GameManager>().End_fill = true;
     }
 }
