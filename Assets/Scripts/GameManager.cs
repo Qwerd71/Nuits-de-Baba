@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private bool End_Filling;
     public GameObject player;
     public GameObject fireball;
-    private GameObject PowBar;
+    public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
     public Vector2 lastCheckpoint = new Vector3(-8,0,0);
@@ -46,8 +46,7 @@ public class GameManager : MonoBehaviour
     {
         Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
         stage = SceneManager.GetActiveScene().buildIndex;
-        PowBar = Camera.main.transform.GetChild(0).gameObject;
-        PowBar.gameObject.GetComponent<Power>().End_Filling();
+        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
     }
 
     // Update is called once per frame
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         /*End_Filling = PowBar.gameObject.GetComponent<Power>().End;
         if (End_Filling)*/
-        Debug.Log(stage);
             switch (stage)
             {
                 case 1:
