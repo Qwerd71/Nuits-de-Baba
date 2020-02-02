@@ -19,7 +19,8 @@ public class CameraManager : MonoBehaviour
         if (Player != null)
         {
             var Target = Player.transform.position + offset;
-            transform.position = Vector3.Lerp(transform.position, Target, Time.fixedDeltaTime * 0.005f);
+            transform.position = Vector3.Lerp(transform.position, Target, Time.fixedDeltaTime * 0.1f);
+
         }
     }
 }
