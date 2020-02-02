@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int stage = 2;
+    private int stage = 4;
     GameObject inthevoid = null;
     GameObject[] Allgos;
     BoxCollider2D bc;
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(stage);
         if (End_fill)
             switch (stage)
             {
@@ -118,7 +119,6 @@ public class GameManager : MonoBehaviour
                     if (Input.GetMouseButtonDown(0) && !isShielded)
                     {
                         actualShield = Instantiate(shield, player.transform.position, zero);
-                        Debug.Log(actualShield);
                         PlayerManager.Instance.currentinvincibilityTime = Time.time + shieldtime;
                         PlayerManager.Instance.isInvincible = true;
                         isShielded = true;
