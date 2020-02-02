@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2078,12 +2078,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8595292124892824955, guid: d8b390bd52f865947801ce81bb8473e5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7631314d113572642b8d26e8432db3fa,
+        type: 3}
     - target: {fileID: 8595292125602889240, guid: d8b390bd52f865947801ce81bb8473e5,
         type: 3}
       propertyPath: m_Name
       value: BaseScene
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1364390959734455672, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: JumpSpeed
+      value: 18000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364390959734455672, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725311715189937244, guid: 0773b549cb12e9749863d5a26a264dbd,
+=======
     - target: {fileID: 8595292125602889243, guid: d8b390bd52f865947801ce81bb8473e5,
+>>>>>>> deb2d5588aab31269dfdbf6bf13a0a44609cef81
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.912322
@@ -2138,5 +2158,72 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.879752
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.879752
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865916220153873736, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.879752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728605304186327226, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 189
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728605304186327226, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728605304186327226, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 377
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728605304186327226, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728605304186327227, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7631314d113572642b8d26e8432db3fa,
+        type: 3}
+    - target: {fileID: 2728605304186327227, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+<<<<<<< HEAD
+    - target: {fileID: 5726460573187459104, guid: 0773b549cb12e9749863d5a26a264dbd,
+        type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+=======
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 240dec9c9b52997409a6a2c8afb1e8c7, type: 2}
+>>>>>>> e888b53061845edb8b790af1b114573e520ebea4
+=======
+>>>>>>> deb2d5588aab31269dfdbf6bf13a0a44609cef81
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b390bd52f865947801ce81bb8473e5, type: 3}
