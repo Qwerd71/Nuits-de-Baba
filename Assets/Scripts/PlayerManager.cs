@@ -84,19 +84,22 @@ public class PlayerManager: MonoBehaviour
         
         if (Time.time > currentinvincibilityTime)
             isInvincible = false;
-            
-        if (Time.time <= currentinvincibilityTime)
+
+        if (!GameManager.Instance.isShielded)
         {
-            if (temp < 0.25)
-                temp += Time.deltaTime;
-            else
+            if (Time.time <= currentinvincibilityTime)
             {
-                sr.enabled = !sr.enabled;
-                temp = 0;
+                if (temp < 0.25)
+                    temp += Time.deltaTime;
+                else
+                {
+                    sr.enabled = !sr.enabled;
+                    temp = 0;
+                }
             }
+            else
+                sr.enabled = true;
         }
-        else
-            sr.enabled = true;
 
         if (transform.position.y <= -50)
         { // en cas de trou, on perd un coeur en tombant et on est respawn en début de niveau
