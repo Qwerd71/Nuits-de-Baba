@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour
                     if (Input.GetMouseButtonDown(0))
                     {
                         Shader.SetGlobalFloat("IsWorldA", (Shader.GetGlobalFloat("IsWorldA") + 1) % 2);
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
                     foreach (GameObject go in Allgos)
                         go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
                     StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
