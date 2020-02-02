@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int stage = 4;
+    public static int stage = 4;
     GameObject inthevoid = null;
     GameObject[] Allgos;
     BoxCollider2D bc;
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         SceneManager.LoadScene(7);
-        SceneManager.LoadScene(stage);
+        //SceneManager.LoadScene(stage);
         Shader.SetGlobalFloat("IsWorldA", 1);
     }
 }
