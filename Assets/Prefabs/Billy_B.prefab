@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5181606081824185286}
   m_Layer: 0
   m_Name: Billy_B
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   currentinvincibilityTime: 0
   isInvincible: 0
   animator: {fileID: 5181606081824185286}
+  panel: {fileID: 0}
 --- !u!95 &5181606081824185286
 Animator:
   serializedVersion: 3

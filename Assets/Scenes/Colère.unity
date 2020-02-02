@@ -2408,6 +2408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Billy_B
       objectReference: {fileID: 0}
+    - target: {fileID: 5181606081824185280, guid: 17665b258afa3584883c648c6f1ef75c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5181606081824185287, guid: 17665b258afa3584883c648c6f1ef75c,
         type: 3}
       propertyPath: m_LocalPosition.x
