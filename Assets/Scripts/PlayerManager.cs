@@ -98,7 +98,7 @@ public class PlayerManager: MonoBehaviour
         else
             sr.enabled = true;
 
-        if (transform.position.y <= -8)
+        if (transform.position.y <= -50)
         { // en cas de trou, on perd un coeur en tombant et on est respawn en début de niveau
             life -= 1;
             isInvincible = true;
