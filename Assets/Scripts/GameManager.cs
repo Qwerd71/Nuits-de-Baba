@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) // ce bloc pour le pouvoir du stage 2
                 {
                     flamehit = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
                         GameObject Fireball = Instantiate(fireball, player.transform.position, Quaternion.identity);
 
                     Fireball.transform.LookAt(new Vector2(flamehit.x, flamehit.y));
@@ -84,12 +85,13 @@ public class GameManager : MonoBehaviour
                         Fireball.GetComponent<SpriteRenderer>().flipX = true;
 
                     Fireball.transform.rotation = new Quaternion(0, 0, Fireball.transform.rotation.z, Fireball.transform.rotation.w);
-                    var Direction = flamehit - Fireball.transform.position;
+                    var Direction = (flamehit - Fireball.transform.position);
                     Direction = Direction - new Vector3(0, 0, Direction.z);
                     Direction = Direction.normalized;
+                    Fireball.transform.position += Direction * 3.3f;
 
                     Fireball.GetComponent<Rigidbody2D>().AddForce( Direction*1000);
-                        Destroy(Fireball, 2f);
+                    Destroy(Fireball, 2f);
       
                         PowBar.gameObject.GetComponent<Animator>().Play("Pouv_full");
                 }
