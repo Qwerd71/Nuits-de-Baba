@@ -151,7 +151,7 @@ public class PlayerManager: MonoBehaviour
     }
     private void Death()
     {
-        GameManager.Instance.Reset();
+        //GameManager.Instance.Reset();
     }
     private void LoseLife(GameObject Heart)
     {

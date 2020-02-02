@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     public GameObject Text;
-    TextMesh tm;
+    TextMeshPro tm;
     public Vector2 lastCheckpoint;
     static GameManager _instancegm;
     public Material mat1;
@@ -55,13 +56,12 @@ public class GameManager : MonoBehaviour
         Allgos = GameObject.FindGameObjectsWithTag("Enemy");
         stage = SceneManager.GetActiveScene().buildIndex;
         if (stage == 5)
-            tm = Text.GetComponent<TextMesh>();
+            tm = Text.GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stage);
         if (End_fill)
             switch (stage)
             {
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
                         StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
-                default:
+                case 5:
                     if (Input.GetMouseButtonDown(0) && Time.time > textTimer)
                     {
                         Text.SetActive(true);
@@ -136,50 +136,41 @@ public class GameManager : MonoBehaviour
                             {
                                 case "Docteur":
                                     tm.text = "I'm sorry. We made all we could but we couldn't save her. My apologies.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Bystander1":
                                     tm.text = "Did you hear about that story ? Poor girl !";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Bystander2":
                                     tm.text = "This kind of driver should be jailed until they die !";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Parent1":
                                     tm.text = "Why did it happen to us ? She was so young.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Parent2":
                                     tm.text = "You will always be welcome at home.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Friend1":
                                     tm.text = "I can't believe it.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Friend2":
                                     tm.text = "Things will never be the same.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Priest":
                                     tm.text = "She lives in a better world now.";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Family1":
                                     tm.text = "...";
-                                    tm.font = new Font("Arial");
                                     break;
                                 case "Family2":
                                     tm.text = "";
-                                    tm.font = new Font("Arial");
                                     break;
                                 default:
-                                    Debug.Log("Rien");
                                     break;
                             }
+
                     }
                     break;
+                default: break;
             }
         transform.position = GameManager.Instance.player.transform.position;
         if (isShielded && Time.time >= PlayerManager.Instance.currentinvincibilityTime)
