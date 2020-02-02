@@ -11,7 +11,7 @@ public class PlayerManager: MonoBehaviour
     public bool Jumping = false;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    public int life = 1;
+    public int life = 3;
     public float invincibilityTime = 3;
 
     public float currentinvincibilityTime;
