@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
-    public Vector2 lastCheckpoint = new Vector3(-8,0,0);
+    public Vector2 lastCheckpoint = PlayerManager.Instance.transform.position;
     static GameManager _instancegm;
     public Material mat1;
     public Material mat2;
@@ -42,9 +42,11 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
+    
     void Start()
     {
-        Allgos = GameObject.FindGameObjectsWithTag("Destroyable");
+        
+        Allgos = GameObject.FindGameObjectsWithTag("Enemy");
         stage = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
                         var Direction = flamehit - Fireball.transform.position;
                         Direction = Direction - new Vector3(0, 0, Direction.z);
                         Direction = Direction.normalized;
-                        Fireball.transform.position += Direction * 3.5f;
+                        Fireball.transform.position += Direction * 5.2f;
 
                         Fireball.GetComponent<Rigidbody2D>().AddForce(Direction * 1000);
                         Destroy(Fireball, 2f);
@@ -96,15 +98,11 @@ public class GameManager : MonoBehaviour
                 case 3:
                     if (Input.GetMouseButtonDown(0))
                     {
-                        foreach (GameObject go in Allgos)
-                        {
-                            go.GetComponent<Collider2D>().isTrigger = !go.GetComponent<Collider2D>().isTrigger; //à changer pour boxcollider2D
-                            if (go.GetComponent<Collider2D>().isTrigger)
-                                go.GetComponent<SpriteRenderer>().material = mat2;
-                            else
-                                go.GetComponent<SpriteRenderer>().material = mat1;
-                        }
-                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
+                        Shader.SetGlobalFloat("IsWorldA", (Shader.GetGlobalFloat("IsWorldA") + 1) % 2);
+                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                    foreach (GameObject go in Allgos)
+                        go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
+                    StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
                 case 4:
@@ -182,5 +180,6 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         SceneManager.LoadScene(stage);
+        Shader.SetGlobalFloat("IsWorldA", 1);
     }
 }
