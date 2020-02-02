@@ -185,6 +185,7 @@ public class GameManager : MonoBehaviour
     }
     public void Reset()
     {
+        SceneManager.LoadScene(7);
         SceneManager.LoadScene(stage);
         Shader.SetGlobalFloat("IsWorldA", 1);
     }
