@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/D\xE9ni.unity"
     guid: f0c0369ab5476e74bb9c8a280440e909
+  - enabled: 1
+    path: "Assets/Scenes/Col\xE8re.unity"
+    guid: 75fee9870e90e3347acea25af7634adc
   m_configObjects: {}
