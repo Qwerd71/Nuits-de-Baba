@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
-    public Vector2 lastCheckpoint = PlayerManager.Instance.transform.position;
+    public Vector2 lastCheckpoint;
     static GameManager _instancegm;
     public Material mat1;
     public Material mat2;
@@ -42,7 +42,10 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    
+    private void Awake()
+    {
+        lastCheckpoint = PlayerManager.Instance.transform.position;
+    }
     void Start()
     {
         
