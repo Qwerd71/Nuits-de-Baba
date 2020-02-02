@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6743335149016499705}
   - component: {fileID: 6743335149016499706}
   - component: {fileID: 6743335149016499707}
+  - component: {fileID: -537079438979137505}
   m_Layer: 0
   m_Name: Spectre
   m_TagString: Enemy
@@ -149,4 +150,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &-537079438979137505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743335149016499708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cc4d74903b3664e96ac83da0860593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingLeft: 0
+  platformSpeed: 5
+  minposx: 0
+  maxposx: 0
