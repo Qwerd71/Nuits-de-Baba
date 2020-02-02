@@ -110,7 +110,8 @@ public class GameManager : MonoBehaviour
                 case 4:
                     if (Input.GetMouseButtonDown(0) && !isShielded)
                     {
-                        actualShield = Instantiate(shield, player.transform.position, zero, player.transform); // (?)
+                        actualShield = Instantiate(shield, player.transform.position, zero);
+                        Debug.Log(actualShield);
                         PlayerManager.Instance.currentinvincibilityTime = Time.time + shieldtime;
                         PlayerManager.Instance.isInvincible = true;
                         isShielded = true;
