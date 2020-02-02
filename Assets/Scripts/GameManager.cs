@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        End_Filling = PowBar.gameObject.GetComponent<Power>().End;
-        if (End_Filling)
+        /*End_Filling = PowBar.gameObject.GetComponent<Power>().End;
+        if (End_Filling)*/
             switch (stage)
             {
                 case 1:
