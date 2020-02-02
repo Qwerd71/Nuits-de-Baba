@@ -16,10 +16,10 @@ public class GameManager : MonoBehaviour
     public GameObject shield;
     private GameObject actualShield;
     public bool isShielded = false;
-    private bool End_Filling;
+    public bool End_fill = true;
     public GameObject player;
     public GameObject fireball;
-    private GameObject PowBar;
+    public GameObject PowBar;
     private Quaternion zero = new Quaternion(0f, 0f, 0f, 0f);
     TextMesh tm;
     public Vector2 lastCheckpoint = PlayerManager.Instance.transform.position;
@@ -48,15 +48,12 @@ public class GameManager : MonoBehaviour
         
         Allgos = GameObject.FindGameObjectsWithTag("Enemy");
         stage = SceneManager.GetActiveScene().buildIndex;
-        PowBar = Camera.main.transform.GetChild(0).gameObject;
-        PowBar.gameObject.GetComponent<Power>().End_Filling();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*End_Filling = PowBar.gameObject.GetComponent<Power>().End;
-        if (End_Filling)*/
+        if (End_fill)
             switch (stage)
             {
                 case 1:
@@ -73,7 +70,7 @@ public class GameManager : MonoBehaviour
                             {
                                 inthevoid = denyhit.collider.gameObject;
                                 denyhit.collider.gameObject.SetActive(false);
-                                PowBar.GetComponent<Animator>().Play("Pouv_empty");
+                                StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                             }
                     }
                     break;
@@ -95,9 +92,8 @@ public class GameManager : MonoBehaviour
 
                         Fireball.GetComponent<Rigidbody2D>().AddForce(Direction * 1000);
                         Destroy(Fireball, 2f);
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
-                    //gameObject.SetActive(false);
                     break;
                 case 3:
                     if (Input.GetMouseButtonDown(0))
@@ -106,6 +102,7 @@ public class GameManager : MonoBehaviour
                         PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
                     foreach (GameObject go in Allgos)
                         go.GetComponent<BoxCollider2D>().isTrigger = !go.GetComponent<BoxCollider2D>().isTrigger;
+                    StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
                 case 4:
@@ -115,7 +112,7 @@ public class GameManager : MonoBehaviour
                         PlayerManager.Instance.currentinvincibilityTime = Time.time + shieldtime;
                         PlayerManager.Instance.isInvincible = true;
                         isShielded = true;
-                        PowBar.gameObject.GetComponent<Animator>().Play("Pouv_empty");
+                        StartCoroutine(PowBar.GetComponent<Jauge_Power>().PowerJaugeCoroutine());
                     }
                     break;
                 default:

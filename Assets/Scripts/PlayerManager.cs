@@ -59,9 +59,9 @@ public class PlayerManager: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Heart1 = Camera.main.transform.GetChild(1).gameObject;
-        Heart2 = Camera.main.transform.GetChild(2).gameObject;
-        Heart3 = Camera.main.transform.GetChild(3).gameObject;
+        Heart1 = Camera.main.transform.GetChild(0).gameObject;
+        Heart2 = Camera.main.transform.GetChild(1).gameObject;
+        Heart3 = Camera.main.transform.GetChild(2).gameObject;
 
         sr = GetComponent<SpriteRenderer>();
     }
