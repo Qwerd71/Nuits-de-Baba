@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tomb.unity
     guid: 7f190bbcc2c995941bd76c510855e669
+  - enabled: 1
+    path: Assets/Scenes/DeathScene.unity
+    guid: 6749d7100ac830e4d934f1343fd9a6e1
   m_configObjects: {}

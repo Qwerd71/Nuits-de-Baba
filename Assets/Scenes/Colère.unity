@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -457,9 +457,11 @@ MonoBehaviour:
   fireball: {fileID: 6741243947662047482, guid: 7c66d6262a27b3a4e8a897740255da11,
     type: 3}
   PowBar: {fileID: 1822567553}
+  Text: {fileID: 0}
   lastCheckpoint: {x: -8, y: 0}
   mat1: {fileID: 0}
   mat2: {fileID: 0}
+  textTimer: 0
 --- !u!4 &208868339
 Transform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1221,7 @@ PrefabInstance:
     - target: {fileID: 6070387992612624673, guid: 40fdb72bb10fe154183b8f9b3881a390,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6070387992612624673, guid: 40fdb72bb10fe154183b8f9b3881a390,
         type: 3}
@@ -1850,7 +1852,7 @@ PrefabInstance:
     - target: {fileID: 6070387992612624673, guid: 40fdb72bb10fe154183b8f9b3881a390,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6070387992612624673, guid: 40fdb72bb10fe154183b8f9b3881a390,
         type: 3}
@@ -1990,7 +1992,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d0a68714ff63311478fd4c237d688190, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
@@ -2189,7 +2191,7 @@ PrefabInstance:
     - target: {fileID: 9090757413309128275, guid: 2494b325e94da2540ace2cc52e995570,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 9090757413309128275, guid: 2494b325e94da2540ace2cc52e995570,
         type: 3}
@@ -2427,7 +2429,7 @@ Transform:
   m_LocalScale: {x: 0.5680893, y: 0.22272262, z: 1.108552}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &870135073
 GameObject:
