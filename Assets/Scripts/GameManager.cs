@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         /*End_Filling = PowBar.gameObject.GetComponent<Power>().End;
         if (End_Filling)*/
+        Debug.Log(stage);
             switch (stage)
             {
                 case 1:
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
                     else if (Input.GetMouseButtonDown(0))
                     {// ce bloc pour le pouvoir du stage 1
                         denyhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    Debug.Log(denyhit.collider.gameObject.tag);
                         if (denyhit.collider != null)
                             if (inthevoid == null && (denyhit.collider.gameObject.tag.Equals("Wall")) || (denyhit.collider.gameObject.tag.Equals("Enemy")))
                             {
