@@ -797,7 +797,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &274199406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -876,7 +876,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &380428664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2954,7 +2954,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2080355107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6070387992612624676, guid: 40fdb72bb10fe154183b8f9b3881a390,
@@ -3007,4 +3007,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
